@@ -1,0 +1,8 @@
+# BasketryStitch has NO runtime dependencies: it is one file that imports
+# only the Python standard library (argparse, json, math, os, sys, tempfile,
+# datetime).  Installing this file is therefore a no-op that simply proves the
+# toolchain works.
+#
+# The optional test runner lives in requirements-dev.txt, because the test
+# suite itself only needs the standard-library unittest module:
+#     python3 -m unittest discover -s tests

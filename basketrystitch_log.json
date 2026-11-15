@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "next_id": 5,
+  "entries": [
+    {
+      "id": 1,
+      "name": "Willow Coil",
+      "reed_width_value": 4.0,
+      "reed_width_unit": "in",
+      "reed_width_mm": 101.6,
+      "sample_rows": 10,
+      "row_height_before_mm": 100.0,
+      "row_height_after_mm": 88.0,
+      "created_at": "2026-11-15T20:22:07Z"
+    },
+    {
+      "id": 2,
+      "name": "Bulrush Tray",
+      "reed_width_value": 10.0,
+      "reed_width_unit": "cm",
+      "reed_width_mm": 100.0,
+      "sample_rows": 8,
+      "row_height_before_mm": 80.0,
+      "row_height_after_mm": 72.0,
+      "created_at": "2026-11-15T20:22:07Z"
+    },
+    {
+      "id": 3,
+      "name": "Rattan Pouch",
+      "reed_width_value": 3.5,
+      "reed_width_unit": "mm",
+      "reed_width_mm": 3.5,
+      "sample_rows": 14,
+      "row_height_before_mm": 63.5,
+      "row_height_after_mm": 55.3,
+      "created_at": "2026-11-15T20:22:07Z"
+    },
+    {
+      "id": 4,
+      "name": "Sedge Garden Basket",
+      "reed_width_value": 0.25,
+      "reed_width_unit": "in",
+      "reed_width_mm": 6.35,
+      "sample_rows": 12,
+      "row_height_before_mm": 132.0,
+      "row_height_after_mm": 118.4,
+      "created_at": "2026-11-15T20:22:07Z"
+    }
+  ]
+}

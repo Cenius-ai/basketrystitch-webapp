@@ -1,0 +1,11 @@
+[project]
+name = "basketrystitch"
+version = "1.0.0"
+description = "Coil-and-stitch basketry pattern log with row-shrinkage estimates"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

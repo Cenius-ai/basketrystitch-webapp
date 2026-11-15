@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Secret / local config (BasketryStitch needs none, but never commit them)
+.env
+
+# Atomic-write temp files, should they ever be left behind by a killed process
+.basketrystitch-*
+
+# Local logs you do not want to share (the demo log IS committed on purpose)
+*.local.json
