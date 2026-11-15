@@ -1,0 +1,140 @@
+BasketryStitch demo - a coil-and-stitch pattern log with row shrinkage estimates
+Log for this demo: ./demo_log.json (throw-away)
+
+$ python3 basketrystitch.py --version
+BasketryStitch 1.0.0
+
+$ python3 basketrystitch.py --log demo_log.json list
+No entries yet.
+Log: /tmp/tmp.3bYWfKRua4/demo_log.json
+
+Add your first sample:
+  python basketrystitch.py add --name "Willow Coil" --reed-width 4 --unit in --sample-rows 10 --row-height-before 100 --row-height-after 88
+
+--- Recording three finished samples -------------------------------------
+
+$ python3 basketrystitch.py --log demo_log.json add --name "Willow Coil" --reed-width 4 --unit in --sample-rows 10 --row-height-before 100 --row-height-after 88
+Added entry 1: Willow Coil
+reed width: 4.00 in (101.60 mm)
+
+$ python3 basketrystitch.py --log demo_log.json add --name "Bulrush Tray" --reed-width 10 --unit cm --sample-rows 8 --row-height-before 80 --row-height-after 72
+Added entry 2: Bulrush Tray
+reed width: 10.00 cm (100.00 mm)
+
+$ python3 basketrystitch.py --log demo_log.json add --name "Rattan Pouch" --reed-width 3.5 --unit mm --sample-rows 14 --row-height-before 63.5 --row-height-after 55.3
+Added entry 3: Rattan Pouch
+reed width: 3.50 mm (3.50 mm)
+
+--- The log --------------------------------------------------------------
+
+$ python3 basketrystitch.py --log demo_log.json list
+BasketryStitch log — 3 samples · demo_log.json
+
+ID  NAME          REED WIDTH            ROWS  BEFORE (mm)  AFTER (mm)  SHRINK
+──  ────────────  ────────────────────  ────  ───────────  ──────────  ──────
+ 1  Willow Coil   4.00 in (101.60 mm)     10       100.00       88.00   12.0%
+ 2  Bulrush Tray  10.00 cm (100.00 mm)     8        80.00       72.00   10.0%
+ 3  Rattan Pouch  3.50 mm (3.50 mm)       14        63.50       55.30   12.9%
+
+--- Projections ----------------------------------------------------------
+
+$ python3 basketrystitch.py --log demo_log.json estimate --id 1 --target-rows 50
+Entry 1: Willow Coil
+reed width: 4.00 in (101.60 mm)
+sample: 10 rows, 100.00 mm before, 88.00 mm after
+per-row after: 8.80 mm
+shrinkage: 12.0%
+target rows: 50
+projected finished height: 440.00 mm
+
+$ python3 basketrystitch.py --log demo_log.json estimate --id 1 --target-height 440
+Entry 1: Willow Coil
+reed width: 4.00 in (101.60 mm)
+sample: 10 rows, 100.00 mm before, 88.00 mm after
+per-row after: 8.80 mm
+shrinkage: 12.0%
+target height: 440.00 mm
+projected rows: 50
+
+$ python3 basketrystitch.py --log demo_log.json estimate --id 2 --target-rows 24
+Entry 2: Bulrush Tray
+reed width: 10.00 cm (100.00 mm)
+sample: 8 rows, 80.00 mm before, 72.00 mm after
+per-row after: 9.00 mm
+shrinkage: 10.0%
+target rows: 24
+projected finished height: 216.00 mm
+
+$ python3 basketrystitch.py --log demo_log.json estimate --id 3 --target-height 120
+Entry 3: Rattan Pouch
+reed width: 3.50 mm (3.50 mm)
+sample: 14 rows, 63.50 mm before, 55.30 mm after
+per-row after: 3.95 mm
+shrinkage: 12.9%
+target height: 120.00 mm
+projected rows: 30
+
+--- Errors are one line on stderr, with documented exit codes -------------
+
+$ python3 basketrystitch.py add --name "" ... (expect exit 2)
+error: --name must not be blank; give the sample a name
+(refused, exit 2)
+
+$ python3 basketrystitch.py estimate --id 99 --target-rows 10 (expect exit 2)
+error: no entry with id 99 (the log holds: 1, 2, 3)
+(refused, exit 2)
+
+$ python3 basketrystitch.py estimate --id 1 (expect exit 2)
+error: give exactly one of --target-rows or --target-height
+(refused, exit 2)
+
+--- Machine-readable mode ------------------------------------------------
+
+$ python3 basketrystitch.py --log demo_log.json list --json
+{
+  "log": "demo_log.json",
+  "count": 3,
+  "entries": [
+    {
+      "id": 1,
+      "name": "Willow Coil",
+      "reed_width_value": 4.0,
+      "reed_width_unit": "in",
+      "reed_width_mm": 101.6,
+      "sample_rows": 10,
+      "row_height_before_mm": 100.0,
+      "row_height_after_mm": 88.0,
+      "created_at": "2026-11-15T20:22:13Z",
+      "shrinkage_pct": 12.0,
+      "per_row_after_mm": 8.8
+    },
+    {
+      "id": 2,
+      "name": "Bulrush Tray",
+      "reed_width_value": 10.0,
+      "reed_width_unit": "cm",
+      "reed_width_mm": 100.0,
+      "sample_rows": 8,
+      "row_height_before_mm": 80.0,
+      "row_height_after_mm": 72.0,
+      "created_at": "2026-11-15T20:22:13Z",
+      "shrinkage_pct": 10.0,
+      "per_row_after_mm": 9.0
+    },
+    {
+      "id": 3,
+      "name": "Rattan Pouch",
+      "reed_width_value": 3.5,
+      "reed_width_unit": "mm",
+      "reed_width_mm": 3.5,
+      "sample_rows": 14,
+      "row_height_before_mm": 63.5,
+      "row_height_after_mm": 55.3,
+      "created_at": "2026-11-15T20:22:13Z",
+      "shrinkage_pct": 12.913386,
+      "per_row_after_mm": 3.95
+    }
+  ]
+}
+
+Demo complete. Your own log lives in ./basketrystitch_log.json - see README.md.
