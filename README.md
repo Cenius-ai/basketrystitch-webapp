@@ -37,7 +37,7 @@ See [`INSTALL.md`](INSTALL.md) for full setup and usage instructions.
 
 ## Architecture
 
-Full-stack app project, delivered as a complete runnable codebase (27 files). Top-level layout: `demo/`, `tests/`. `install.sh` wires up dependencies and loads seed records; after it runs the app has real data to show. Step-by-step setup guide: [`INSTALL.md`](INSTALL.md).
+Full-stack app project, delivered as a complete runnable codebase (17 files). Top-level layout: `demo/`, `tests/`. `install.sh` wires up dependencies and loads seed records; after it runs the app has real data to show. Step-by-step setup guide: [`INSTALL.md`](INSTALL.md).
 
 ## Usage guide
 
